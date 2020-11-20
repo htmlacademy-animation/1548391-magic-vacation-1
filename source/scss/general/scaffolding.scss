@@ -99,3 +99,44 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+@keyframes FadeIn {
+  0% {
+    opacity:0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0%);
+  }
+}
+@keyframes FadeRight {
+  0% {
+    opacity:0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity:1;
+    transform: translateX(0%);
+  }
+}
+@keyframes FadeLeft {
+  0% {
+    opacity:0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity:1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes SlideX {
+  0% {
+    opacity:0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity:1;
+    transform: scaleX(1);
+  }
+}

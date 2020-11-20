@@ -93,6 +93,8 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  animation: FadeIn;
+  animation-duration: 600ms;
 
   @media (min-width: $stop-scaling) {
     width: 509px;

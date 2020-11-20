@@ -65,6 +65,9 @@
     & + .social-block__list {
       opacity: 1;
       pointer-events: auto;
+      & .social-block__link {
+        opacity: 1;
+      }
     }
   }
 
@@ -102,6 +105,9 @@
     margin-top: 0;
     opacity: 1;
     pointer-events: auto;
+    & .social-block__link {
+      opacity: 1;
+    }
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
@@ -112,6 +118,9 @@
     margin-top: 0;
     opacity: 1;
     pointer-events: auto;
+    & .social-block__link {
+      opacity: 1;
+    }
   }
 
   &::before {
@@ -130,16 +139,25 @@
   &:hover {
     opacity: 1;
     pointer-events: auto;
+    & .social-block__link {
+      opacity: 1;
+    }
   }
 
   &:focus-within {
     opacity: 1;
     pointer-events: auto;
+    & .social-block__link {
+      opacity: 1;
+    }
   }
 
   .social-block--active & {
     opacity: 1;
     pointer-events: auto;
+    & .social-block__link {
+      opacity: 1;
+    }
   }
 
   li {
@@ -168,6 +186,8 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition: all 200ms ease;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -205,12 +225,11 @@
   svg {
     @include center;
   }
-
   &--fb {
+    transition-delay: 0;
     svg {
       width: 0.8rem;
       height: 1.7rem;
-
       @media (min-width: $stop-scaling) {
         width: 8px;
         height: 17px;
@@ -219,10 +238,10 @@
   }
 
   &--insta {
+    transition-delay: 100ms;
     svg {
       width: 1.5rem;
       height: 1.5rem;
-
       @media (min-width: $stop-scaling) {
         width: 15px;
         height: 15px;
@@ -231,6 +250,7 @@
   }
 
   &--vk {
+    transition-delay: 200ms;
     svg {
       width: 1.7rem;
       height: 1rem;
