@@ -64,7 +64,6 @@
 
     & + .social-block__list {
       opacity: 1;
-      top:100%;
       pointer-events: auto;
     }
   }
@@ -90,7 +89,6 @@
   margin-top: 1.5rem;
   opacity: 0;
   pointer-events: none;
-  transition: all 300ms ease;
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
