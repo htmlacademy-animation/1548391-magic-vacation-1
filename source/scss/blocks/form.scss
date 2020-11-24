@@ -1,7 +1,8 @@
 .form {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .form__label {
@@ -28,7 +29,15 @@
     pointer-events: auto;
   }
 }
+@keyframes fieldAppearance {
+  0% {
+    width: 0
+  }
+  100% {
+    width: var(--customWidth)
+  }
 
+}
 .form__field {
   flex: none;
   margin-right: 3rem;
@@ -43,6 +52,12 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
+  flex-grow:0;
+  animation: fieldAppearance;
+  animation-duration: 600ms;
+  animation-timing-function: ease;
+  --customWidth: calc(100% - 21rem);
+  
 
   &:focus {
     border: 1px solid $c-purple;
@@ -55,6 +70,7 @@
     width: calc(100% - 210px);
     font-size: 24px;
     border-radius: 30px;
+    --customWidth: calc(100% - 210px);
   }
 
   @media (orientation: portrait) {
@@ -63,10 +79,12 @@
     width: calc(100% - 5rem);
     height: 4rem;
     font-size: 1.6rem;
+    --customWidth: calc(100% - 5rem);
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
     width: calc(100% - 9rem);
+    --customWidth: calc(100% - 9rem);
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
@@ -75,11 +93,12 @@
     width: calc(100% - 5rem);
     height: 4rem;
     font-size: 1.6rem;
+    --customWidth: calc(100% - 5rem);
   }
 }
 
 .form__button {
-  flex-grow: 1;
+  flex-grow: 0;
 
   @media (orientation: portrait) {
     position: relative;
