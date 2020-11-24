@@ -1142,9 +1142,7 @@ img {
   margin-bottom: 2rem;
   text-transform: uppercase;
   font-size: 2.4rem;
-  line-height: 1.2;
-  animation: FadeRight;
-  animation-duration: 300ms; }
+  line-height: 1.2; }
   @media (min-width: 2000px) {
     .chat__message {
       margin-bottom: 20px;
@@ -1316,7 +1314,8 @@ img {
 .form {
   position: relative;
   display: flex;
-  align-items: center; }
+  align-items: flex-end;
+  justify-content: flex-end; }
 
 .form__label {
   position: absolute;
@@ -1340,6 +1339,12 @@ img {
       opacity: 1;
       pointer-events: auto; } }
 
+@keyframes fieldAppearance {
+  0% {
+    width: 0; }
+  100% {
+    width: var(--customWidth); } }
+
 .form__field {
   flex: none;
   margin-right: 3rem;
@@ -1353,7 +1358,12 @@ img {
   color: #5f458c;
   border: 0;
   border-radius: 3rem;
-  outline: none; }
+  outline: none;
+  flex-grow: 0;
+  animation: fieldAppearance;
+  animation-duration: 600ms;
+  animation-timing-function: ease;
+  --customWidth: calc(100% - 21rem); }
   .form__field:focus {
     border: 1px solid #a67ee5; }
   @media (min-width: 2000px) {
@@ -1363,27 +1373,31 @@ img {
       height: 60px;
       width: calc(100% - 210px);
       font-size: 24px;
-      border-radius: 30px; } }
+      border-radius: 30px;
+      --customWidth: calc(100% - 210px); } }
   @media (orientation: portrait) {
     .form__field {
       margin-right: 1rem;
       padding: 0 2.5rem;
       width: calc(100% - 5rem);
       height: 4rem;
-      font-size: 1.6rem; } }
+      font-size: 1.6rem;
+      --customWidth: calc(100% - 5rem); } }
   @media (max-width: 1024px) and (orientation: landscape) {
     .form__field {
-      width: calc(100% - 9rem); } }
+      width: calc(100% - 9rem);
+      --customWidth: calc(100% - 9rem); } }
   @media (max-width: 768px) and (orientation: landscape) {
     .form__field {
       margin-right: 1rem;
       padding: 0 2.5rem;
       width: calc(100% - 5rem);
       height: 4rem;
-      font-size: 1.6rem; } }
+      font-size: 1.6rem;
+      --customWidth: calc(100% - 5rem); } }
 
 .form__button {
-  flex-grow: 1; }
+  flex-grow: 0; }
   @media (orientation: portrait) {
     .form__button {
       position: relative;
