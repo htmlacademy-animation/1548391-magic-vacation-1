@@ -1,5 +1,10 @@
 .social-block {
   position: relative;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     .social-block__list {
@@ -13,8 +18,8 @@
   @include btn-reset;
   position: relative;
   display: block;
-  width: 4rem;
-  height: 4rem;
+  width: 0rem;
+  height: 0rem;
   color: $c-dark;
   border-radius: 50%;
   transition: all 300ms ease;
@@ -262,5 +267,11 @@
         height: 10px;
       }
     }
+  }
+}
+.loaded {
+  .social-block__toggler {
+    width: 4rem;
+    height: 4rem;
   }
 }
