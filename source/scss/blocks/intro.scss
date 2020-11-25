@@ -95,6 +95,9 @@
   line-height: 1.27;
   animation: FadeIn;
   animation-duration: 600ms;
+  animation-delay:600ms;
+  opacity:0;
+  animation-fill-mode: forwards;
 
   @media (min-width: $stop-scaling) {
     width: 509px;
