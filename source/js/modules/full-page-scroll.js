@@ -12,7 +12,7 @@ export default class FullPageScroll {
     this.prevScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
-    this.transitionDuration = 1200; // ms
+    this.transitionDuration = 900; // ms
   }
 
   init() {
