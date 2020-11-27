@@ -6,14 +6,17 @@ export default class FullPageScroll {
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.transitionElement = document.querySelector(`.transition`);
 
     this.activeScreen = 0;
+    this.prevScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.transitionDuration = 1200; // ms
   }
 
   init() {
-    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
+    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, { trailing: true }));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
@@ -23,20 +26,43 @@ export default class FullPageScroll {
     const currentPosition = this.activeScreen;
     this.reCalculateActiveScreenPosition(evt.deltaY);
     if (currentPosition !== this.activeScreen) {
-      this.changePageDisplay();
+      if (this.activeScreen === 2 && evt.deltaY > 0) {
+        this.showTransition();
+        setTimeout(() => {
+          this.changePageDisplay();
+        }, this.transitionDuration / 2);
+      } else {
+        this.changePageDisplay();
+      }
     }
   }
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
+    this.prevScreen = this.activeScreen;
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
-    this.changePageDisplay();
+    if (this.activeScreen === 2 && this.prevScreen === 1) {
+      this.showTransition();
+      setTimeout(() => {
+        this.changePageDisplay();
+      }, this.transitionDuration / 2);
+    } else {
+      this.changePageDisplay();
+    }
+
   }
 
   changePageDisplay() {
     this.changeVisibilityDisplay();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
+  }
+
+  showTransition() {
+    this.transitionElement.classList.add(`transition--active`);
+    setTimeout(() => {
+      this.transitionElement.classList.remove(`transition--active`);
+    }, this.transitionDuration);
   }
 
   changeVisibilityDisplay() {
